@@ -4,6 +4,13 @@
 // 7 8 
 // 49
 
+int foo(int x) 
+{
+    printf("foo(i)  %d\n", x);
+    return x;
+}
+
+
 int main(int argc, char **argv)
 {   
     int m, n, sumDiv, maxSumDiv, num;
@@ -17,7 +24,8 @@ int main(int argc, char **argv)
 	    
         sumDiv = 0;
         double sqrt_m = sqrt(m);
-        for (int i = 1; i < sqrt_m || fabs(sqrt_m - i) < eps; i++) {
+        for (int i = 1; (i < sqrt_m) || (fabs(sqrt_m - foo(i)) < eps); i++) {
+            printf("i=%d sqrt=%f\n", i, sqrt_m);
             if (m % i == 0) {
                     sumDiv += i;
 
