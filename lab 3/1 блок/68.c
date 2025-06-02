@@ -1,24 +1,41 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+
+#define PAL(a) ( (a[0]) == (a[3]) && (a[1]) == (a[2]) )
+
+int f_pal(char * a) {
+    //printf("fa = %s\n", a);
+    return (a[0] == a[3] && a[1] == a[2]);
+}
+
 int main()
 {
-    int i;
-    char string [20];
+    char a[5];
+    scanf("%4s", a);
 
-    scanf("%s", string);
+    if (PAL(a)) {printf("Палиндром\n");} 
+    else {printf("Не палиндром\n");}
 
-    for (i=0; i< strlen(string); i++)
-    {
-        if (string[i] != string [strlen(string)-1 - i])
-        {
-            printf("Not a palindrome String");
-            return 0;
-        }
+    int x = f_pal(a);  // переадем адрес на начало массива
+    // int x = f_pal(&a[0]);
+    printf("x = %d", x);
 
-    }
+    
 
-    printf("Palindrome String");
     return 0;
-
 }
+
+
+// char a[5];
+//     scanf("%4s", a);
+    
+//     if (a[0] == a[3] && a[1] == a[2]) 
+//         printf("%s - Палиндром\n", a);
+//     else
+//         printf("%s Не палиндром\n", a);
+
+// for (int i = 0; a[i] != '\0'; i++) {
+//     if (a[i] != a[len-1-i]) {
+//         printf("%s Не палиндром\n", a);
+//         return 0;
+//     }
+// }
