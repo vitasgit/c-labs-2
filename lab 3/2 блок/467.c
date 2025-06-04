@@ -2,18 +2,23 @@
 #include <stdlib.h>
 #include <string.h>
 
+
 void foo(char * s1, char * s2) {
 	int i, j, k;
     k = 0;
 
-    for (i = 0; s1[i] != '\0'; i++) {
-        for (j = 0; (s1[i] != s2[j]) && s2[j] != '\0'; j++) {
-			;}
-		
+    for (i = 0; s1[i] != '\0'; i++) { 
+        for (j = 0; (s1[i] != s2[j]) && (s2[j] != '\0'); j++) {;}
+
         if (s2[j] == '\0') {
+			if (k == i) {
+				k++;
+                continue;
+            }
 			s1[k] = s1[i];
 			k++;
 		}
+		
     }
 
     s1[k] = '\0';
@@ -25,9 +30,10 @@ int main(int argc, char **argv, char **env)
 	char * s2 = NULL;
 	scanf("%ms", &s1);
 	scanf("%ms", &s2);
-	foo(s1, s2);
 
-	printf("s1 = %s\n", s1);
+	foo(s1, s2);
+	printf("s1: %s\n", s1);
+
 	free(s1);
 	free(s2);
 

@@ -3,21 +3,28 @@
 #include <string.h>
 
 void foo(char * s, int n) {
+    if (n <= strlen(s)) return;
+
 	char * words[10];
-    char * pch = strtok(s, " ");  // указатель на перво слово до пробела
+    char * pch;
+
+    pch = strtok(s, " ");  // указатель на перво слово до пробела
     int i = 0;
     while (pch != NULL) {
         // printf("\n%s", pch);
-        words[i++] = pch;
+        words[i] = pch;
         pch = strtok(NULL, " ");  // После вызова строка изменяется(разделители заменяются на '\0') NULL чтобы поиск продолжил в оригинальной строке
+        i++;
     }
     int count_word = i;
+    // printf("words = %d\n", count_word); 
+    if (count_word <= 1) return;
 
     // массив слов
     // for (int i = 0; i < count_word; i++) {
     //     // printf("%s\n", words[i]);
     // }
-    
+
     // промежутки между словами
     int prom = count_word - 1;
 
@@ -48,7 +55,7 @@ void foo(char * s, int n) {
 
     strcpy(s, s2);
     printf("s = %s\n", s);
-    printf("len = %d\n", strlen(s));
+    printf("len = %zu\n", strlen(s));
 }
 
 
@@ -66,7 +73,6 @@ int main(int argc, char **argv, char **env)
 
     foo(s, n);
 
-    
 	
 	return 0;
 }
